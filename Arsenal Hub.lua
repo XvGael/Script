@@ -29,14 +29,13 @@ local Window = Rayfield:CreateWindow({
 })
 
 local MainTab = Window:CreateTab("Combat", nil) -- Title, Image
-local MainSection = MainTab:CreateSection("Main")
-
-local MainSection = MainTab:CreateSection("Silent Aim")
+local Section = MainTab:CreateSection("Main")
+Section:Set("menu")
 
 Rayfield:Notify({
-   Title = "automatic activation",
-   Content = "Silent Aim And ESP",
-   Duration = 5,
+   Title = "Script Loaded",
+   Content = "Successfully Loaded",
+   Duration = 6.5,
    Image = nil,
    Actions = { -- Notification Buttons
       Ignore = {
@@ -48,8 +47,22 @@ Rayfield:Notify({
 },
 })
 
-local Rayfield = loadstring(game:HttpGet('https://pastebin.com/raw/SkFKRQ1p'))()
+local Toggle = MainTab:CreateToggle({
+   Name = "ESP",
+   CurrentValue = false,
+   Flag = "Toggle1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value) local Rayfield = loadstring(game:HttpGet('https://pastebin.com/raw/xwhGWM40'))()
+   -- The function that takes place when the toggle is pressed
+   -- The variable (Value) is a boolean on whether the toggle is true or false
+   end,
+})
 
-local MainSection = MainTab:CreateSection("ESP")
-
-local Rayfield = loadstring(game:HttpGet('https://pastebin.com/raw/xwhGWM40'))()
+local Toggle = MainTab:CreateToggle({
+   Name = "Silent Aim",
+   CurrentValue = false,
+   Flag = "Toggle1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value) local Rayfield = loadstring(game:HttpGet('https://pastebin.com/raw/SkFKRQ1p'))()
+   -- The function that takes place when the toggle is pressed
+   -- The variable (Value) is a boolean on whether the toggle is true or false
+   end,
+})
