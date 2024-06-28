@@ -15,13 +15,13 @@ local config = {
     notification = {
         title = "Auto Parry",
         text = "✅",
-        duration = 3,
+        duration = 2,
         button1 = "Yes"
     },
     parry = {
-        minDistance = 1,
+        minDistance = 0.5,
         maxDistance = 100,
-        curveRestriction = 2.5,
+        curveRestriction = 1.5,
         debugCurved = true,
         disableVisualizer = false
     },
@@ -37,7 +37,7 @@ local config = {
     },
     autoSpam = {
         closeDistance = 1,
-        farDistance = 5
+        farDistance = 2
     }
 }
 
@@ -150,7 +150,7 @@ end
 local function handleTargeting()
     local distance, ball = getDistanceAndBall()
     if isTargeted() and not alreadyChecked then
-        visualizer.Color = ((tick() - lastCheckTime < 0.7 and distance < 20) or distance < 20) and Color3.new(1, 0, 0) or config.visualizer.color
+        visualizer.Color = ((tick() - lastCheckTime < 0.7 and distance < 1) or distance < 1) and Color3.new(1, 0, 0) or config.visualizer.color
         alreadyChecked = true
         lastCheckTime = tick()
     elseif not isTargeted() then
