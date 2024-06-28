@@ -1,3 +1,5 @@
+-- made by disprrt
+
 if _G.cons then
     for _, v in pairs(_G.cons) do
         v:Disconnect()
